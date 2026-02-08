@@ -7,7 +7,6 @@ Tecnologías:
 - Tailwind
 - CSS
 - HTML5
-- CSS
 - JavaScript
 
 Aquí se implementará:
