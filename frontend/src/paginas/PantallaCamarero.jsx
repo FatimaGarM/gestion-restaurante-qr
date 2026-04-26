@@ -16,9 +16,9 @@ function PantallaCamarero() {
 
   function cargarTodo() {
     Promise.all([
-      authFetch("/pedidos/activos").then(res => res.json()),
-      authFetch("/servicios/mesas-con-sesion").then(res => res.json()),
-      authFetch("/servicios/cobros-pendientes").then(res => res.json())
+      authFetch("/api/pedidos/activos").then(res => res.json()),
+      authFetch("/api/servicios/mesas-con-sesion").then(res => res.json()),
+      authFetch("/api/servicios/cobros-pendientes").then(res => res.json())
     ])
       .then(([activos, mesas, cobros]) => {
         setPedidos(Array.isArray(activos) ? activos : []);
@@ -29,26 +29,26 @@ function PantallaCamarero() {
   }
 
   function servirPedido(id) {
-    authFetch(`/pedidos/${id}/siguiente-estado`, { method: "PUT" })
+    authFetch(`/api/pedidos/${id}/siguiente-estado`, { method: "PUT" })
       .then(res => res.json())
       .then(() => cargarTodo())
       .catch(() => {});
   }
 
   function cerrarMesa(mesa) {
-    authFetch(`/servicios/${mesa}/cerrar`, { method: "PUT" })
+    authFetch(`/api/servicios/${mesa}/cerrar`, { method: "PUT" })
       .then(() => cargarTodo())
       .catch(() => {});
   }
 
   function atenderCobro(mesa) {
-    authFetch(`/servicios/${mesa}/cobro/atender`, { method: "PUT" })
+    authFetch(`/api/servicios/${mesa}/cobro/atender`, { method: "PUT" })
       .then(() => cargarTodo())
       .catch(() => {});
   }
 
   function marcarCobroPersona(mesa, persona, cobrado = true) {
-    authFetch(`/servicios/${mesa}/cobro/persona/${persona}`, {
+    authFetch(`/api/servicios/${mesa}/cobro/persona/${persona}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cobrado })
@@ -58,7 +58,7 @@ function PantallaCamarero() {
   }
 
   function marcarCobroTotal(mesa) {
-    authFetch(`/servicios/${mesa}/cobro/total`, { method: "PUT" })
+    authFetch(`/api/servicios/${mesa}/cobro/total`, { method: "PUT" })
       .then(() => cargarTodo())
       .catch(() => {});
   }

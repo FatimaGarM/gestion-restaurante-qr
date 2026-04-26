@@ -50,13 +50,13 @@ function GestionProductos() {
     }, [proveedorEditar]);
 
     function cargarProveedores() {
-        authFetch("/proveedores")
+        authFetch("/api/proveedores")
             .then(res => res.json())
             .then(data => setProveedores(data));
     }
 
     function cargarProductos() {
-        authFetch("/productos")
+        authFetch("/api/productos")
             .then(res => res.json())
             .then(data => setProductos(data));
     }
@@ -127,7 +127,7 @@ function GestionProductos() {
 
         if (!productoAEliminar) return;
 
-        authFetch(`/productos/${productoAEliminar}`, {
+        authFetch(`/api/productos/${productoAEliminar}`, {
             method: "DELETE"
         })
             .then(res => {
@@ -170,7 +170,7 @@ function GestionProductos() {
 
         if (productoEditar != null) {
 
-            authFetch(`/productos/${productoEditar}`, {
+            authFetch(`/api/productos/${productoEditar}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -183,7 +183,7 @@ function GestionProductos() {
 
         } else {
 
-            authFetch("/productos", {
+            authFetch("/api/productos", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -206,7 +206,7 @@ function GestionProductos() {
 
         if (proveedorEditar != null) {
 
-            authFetch(`/proveedores/${proveedorEditar}`, {
+            authFetch(`/api/proveedores/${proveedorEditar}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -219,7 +219,7 @@ function GestionProductos() {
 
         } else {
 
-            authFetch("/proveedores", {
+            authFetch("/api/proveedores", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -234,7 +234,7 @@ function GestionProductos() {
 
     function eliminarProveedor(idProveedor) {
 
-        authFetch(`/proveedores/${idProveedor}`, {
+        authFetch(`/api/proveedores/${idProveedor}`, {
             method: "DELETE"
         })
             .then(res => {
@@ -248,7 +248,7 @@ function GestionProductos() {
 
     function cambiarStock(idProducto, nuevoStock) {
 
-        authFetch(`/productos/${idProducto}/cambiar-stock`, {
+        authFetch(`/api/productos/${idProducto}/cambiar-stock`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nuevoStock })

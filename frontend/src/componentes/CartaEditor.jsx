@@ -32,8 +32,8 @@ function CartaEditor() {
 
     useEffect(() => {
         cargarCartas();
-        authFetch("/platos").then(r => r.json()).then(setPlatos);
-        authFetch("/configuracion")
+        authFetch("/api/platos").then(r => r.json()).then(setPlatos);
+        authFetch("/api/configuracion")
             .then(r => r.json())
             .then(data => setUrlClientePublica(data?.urlClientePublica || ""))
             .catch(() => {});
@@ -50,7 +50,7 @@ function CartaEditor() {
     }, [busquedaCarta, cartas]);
 
     function cargarCartas() {
-        authFetch("/cartas")
+        authFetch("/api/cartas")
             .then(r => r.json())
             .then(data => {
                 setCartas(data);
@@ -61,7 +61,7 @@ function CartaEditor() {
     }
 
     function cargarCarta(id) {
-        authFetch(`/cartas/${id}`)
+        authFetch(`/api/cartas/${id}`)
             .then(r => r.json())
             .then(data => {
                 setCarta(data);
@@ -77,7 +77,7 @@ function CartaEditor() {
 
     async function crearCarta() {
         if (!nombreNuevaCarta.trim()) return;
-        const res = await authFetch("/cartas", {
+        const res = await authFetch("/api/cartas", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre: nombreNuevaCarta.trim() })
@@ -91,7 +91,7 @@ function CartaEditor() {
 
     async function añadirSeccion() {
         if (!nombreNuevaSeccion.trim() || !cartaSeleccionadaId) return;
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones`, {
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre: nombreNuevaSeccion.trim(), nombreEn: nombreEnNuevaSeccion.trim() })
@@ -103,13 +103,13 @@ function CartaEditor() {
     }
 
     async function eliminarSeccion(seccionId) {
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones/${seccionId}`, { method: "DELETE" });
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones/${seccionId}`, { method: "DELETE" });
         cargarCarta(cartaSeleccionadaId);
     }
 
     async function guardarEdicionSeccion() {
         if (!modalEditarSeccion || !modalEditarSeccion.nombre.trim()) return;
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones/${modalEditarSeccion.id}`, {
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones/${modalEditarSeccion.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre: modalEditarSeccion.nombre.trim(), nombreEn: modalEditarSeccion.nombreEn.trim() })
@@ -120,7 +120,7 @@ function CartaEditor() {
 
     async function eliminarCarta() {
         if (!cartaSeleccionadaId) return;
-        await authFetch(`/cartas/${cartaSeleccionadaId}`, { method: "DELETE" });
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}`, { method: "DELETE" });
         setConfirmarEliminarCarta(false);
         setCarta(null);
         setCartaSeleccionadaId(null);
@@ -128,7 +128,7 @@ function CartaEditor() {
     }
 
     async function añadirPlatoASeccion(seccionId, platoId) {
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items`, {
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ platoId })
@@ -139,12 +139,12 @@ function CartaEditor() {
     }
 
     async function eliminarItem(seccionId, itemId) {
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items/${itemId}`, { method: "DELETE" });
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items/${itemId}`, { method: "DELETE" });
         cargarCarta(cartaSeleccionadaId);
     }
 
     async function moverItem(seccionId, itemId, direccion) {
-        await authFetch(`/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items/${itemId}/orden`, {
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/secciones/${seccionId}/items/${itemId}/orden`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ direccion })
@@ -157,7 +157,7 @@ function CartaEditor() {
         if (!file || !cartaSeleccionadaId) return;
         const fd = new FormData();
         fd.append("imagen", file);
-        await authFetch(`/cartas/${cartaSeleccionadaId}/imagen`, { method: "POST", body: fd });
+        await authFetch(`/api/cartas/${cartaSeleccionadaId}/imagen`, { method: "POST", body: fd });
         cargarCarta(cartaSeleccionadaId);
     }
 
@@ -198,7 +198,7 @@ function CartaEditor() {
 
     async function activarCarta() {
         if (!cartaSeleccionadaId) return;
-        const res = await authFetch(`/cartas/${cartaSeleccionadaId}/activar`, { method: "PUT" });
+        const res = await authFetch(`/api/cartas/${cartaSeleccionadaId}/activar`, { method: "PUT" });
         if (res.ok) {
             const updated = await res.json();
             setCartas(prev => prev.map(c => ({ ...c, activa: c.id === cartaSeleccionadaId })));

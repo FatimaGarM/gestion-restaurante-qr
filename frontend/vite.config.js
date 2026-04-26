@@ -8,81 +8,13 @@ export default defineConfig({
     host: true,
     allowedHosts: true,
     proxy: {
-      '/empleados': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-      },
-      '/platos': {
+      '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true
-      },
-      '/pedidos': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-      },
-      '/estadisticas': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
       },
       '/uploads': {
         target: 'http://localhost:8080',
         changeOrigin: true
-      },
-      '/configuracion': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-      },
-      '/auth': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/servicios': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/cartas': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-      },
-      '/publica': {
-        target: 'http://localhost:8080',
-        changeOrigin: true
-      },
-      '/menus': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-        },
-      '/productos': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
-      },
-      '/proveedores': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        bypass: (req) => {
-          if (req.headers.accept?.includes('text/html')) return '/index.html';
-        }
       }
     }
   }

@@ -23,7 +23,7 @@ function FormularioProducto({
     const [ proveedores, setProveedores] = useState([]);
 
     useEffect(() => {
-        authFetch("/proveedores")
+        authFetch("/api/proveedores")
             .then(res => res.json())
             .then(data => setProveedores(data))
             .catch(() => {});

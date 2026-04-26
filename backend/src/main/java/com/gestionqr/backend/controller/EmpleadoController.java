@@ -16,9 +16,9 @@ import java.util.Optional;
  * Controlador REST para la gestión de empleados.
  * Se encarga de recibir las peticiones HTTP y delegar la lógica al servicio.
  */
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/empleados")
+@RequestMapping("/api/empleados")
 public class EmpleadoController {
 
     // Servicio donde está la lógica de negocio

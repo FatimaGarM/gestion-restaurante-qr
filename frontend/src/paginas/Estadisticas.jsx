@@ -17,7 +17,7 @@ function Estadisticas() {
 
   useEffect(() => {
     setStats(null);
-    authFetch(`/estadisticas?periodo=${periodo}`)
+    authFetch(`/api/estadisticas?periodo=${periodo}`)
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(() => {});

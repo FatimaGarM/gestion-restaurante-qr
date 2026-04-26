@@ -26,7 +26,7 @@ function Configuracion() {
 
   // ── Cargar configuración al montar ──
   useEffect(() => {
-    authFetch("/configuracion")
+    authFetch("/api/configuracion")
       .then(res => res.json())
       .then(data => {
         setNombreRestaurante(data.nombreRestaurante || "");
@@ -64,7 +64,7 @@ function Configuracion() {
     if (logo) formData.append("logo", logo);
     if (imagenFondo) formData.append("imagenFondo", imagenFondo);
 
-    authFetch("/configuracion", {
+    authFetch("/api/configuracion", {
       method: "PUT",
       body: formData
     })
@@ -85,7 +85,7 @@ function Configuracion() {
   }
 
   function cancelar() {
-    authFetch("/configuracion")
+    authFetch("/api/configuracion")
       .then(res => res.json())
       .then(data => {
         setNombreRestaurante(data.nombreRestaurante || "");

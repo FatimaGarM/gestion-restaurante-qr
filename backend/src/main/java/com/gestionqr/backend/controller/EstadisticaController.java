@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.gestionqr.backend.service.EstadisticaService;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/estadisticas")
+@RequestMapping("/api/estadisticas")
 public class EstadisticaController {
 
     @Autowired

@@ -42,7 +42,7 @@ function GestionarCarta() {
     }, []);
 
     function cargarPlatos() {
-        authFetch("/platos")
+        authFetch("/api/platos")
             .then(res => res.json())
             .then(data => setPlatos(data));
     }
@@ -85,7 +85,7 @@ function GestionarCarta() {
 
         if (!platoAEliminar) return;
 
-        authFetch(`/platos/${platoAEliminar.id}`, {
+        authFetch(`/api/platos/${platoAEliminar.id}`, {
             method: "DELETE"
         })
             .then(res => {
@@ -100,7 +100,7 @@ function GestionarCarta() {
 
         setEditar(true);
 
-        authFetch(`/platos/${idPlato}`)
+        authFetch(`/api/platos/${idPlato}`)
             .then(res => res.json())
             .then(data => {
 
@@ -140,7 +140,7 @@ function GestionarCarta() {
 
         if (id) {
 
-            authFetch(`/platos/${id}`, {
+            authFetch(`/api/platos/${id}`, {
                 method: "PUT",
                 body: formData
             }).then(() => {
@@ -150,7 +150,7 @@ function GestionarCarta() {
 
         } else {
 
-            authFetch("/platos/con-imagen", {
+            authFetch("/api/platos/con-imagen", {
                 method: "POST",
                 body: formData
             }).then(() => {
@@ -162,7 +162,7 @@ function GestionarCarta() {
 
     function toggleDisponible(id) {
 
-        authFetch(`/platos/${id}/disponible`, {
+        authFetch(`/api/platos/${id}/disponible`, {
             method: "PUT"
         })
             .then(res => {

@@ -66,7 +66,7 @@ function GestionarEmpleados() {
   }
 
   function cargarEmpleados() {
-    authFetch("/empleados").then(r => r.json()).then(setEmpleados);
+    authFetch("/api/empleados").then(r => r.json()).then(setEmpleados);
   }
 
   function limpiarNew() {
@@ -84,12 +84,12 @@ function GestionarEmpleados() {
     fd.append("estado", estadoNew);
     if (imagenNew) fd.append("imagen", imagenNew);
 
-    authFetch("/empleados/con-imagen", { method: "POST", body: fd })
+    authFetch("/api/empleados/con-imagen", { method: "POST", body: fd })
       .then(() => { cargarEmpleados(); limpiarNew(); mostrarToast(t("empleados.toastAnadido")); });
   }
 
   function abrirEditar(empId) {
-    authFetch(`/empleados/${empId}`).then(r => r.json()).then(data => {
+    authFetch(`/api/empleados/${empId}`).then(r => r.json()).then(data => {
       setIdEdit(empId);
       setNombreEdit(data.nombre);
       setEmailEdit(data.email);
@@ -109,7 +109,7 @@ function GestionarEmpleados() {
     fd.append("estado", estadoEdit);
     if (imagenEdit) fd.append("imagen", imagenEdit);
 
-    authFetch(`/empleados/${idEdit}`, { method: "PUT", body: fd })
+    authFetch(`/api/empleados/${idEdit}`, { method: "PUT", body: fd })
       .then(r => r.json())
       .then(actualizado => {
         cargarEmpleados();
@@ -127,7 +127,7 @@ function GestionarEmpleados() {
   }
 
   function eliminarEmpleado(id) {
-    authFetch(`/empleados/${id}`, { method: "DELETE" })
+    authFetch(`/api/empleados/${id}`, { method: "DELETE" })
       .then(() => { cargarEmpleados(); setEmpleadoAEliminar(null); });
   }
 

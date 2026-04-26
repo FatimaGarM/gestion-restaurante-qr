@@ -19,7 +19,7 @@ function Inicio() {
     }[rol] || rol);
 
     useEffect(() => {
-        authFetch("/pedidos/activos")
+        authFetch("/api/pedidos/activos")
             .then(res => res.json())
             .then(data => {
                 setPedidos(data);
@@ -27,7 +27,7 @@ function Inicio() {
             .catch(() => {});
 
         if (usuario.tipoEmpleado === "GERENTE") {
-            authFetch("/estadisticas")
+            authFetch("/api/estadisticas")
                 .then(res => res.json())
                 .then(data => setStats(data))
                 .catch(() => {});

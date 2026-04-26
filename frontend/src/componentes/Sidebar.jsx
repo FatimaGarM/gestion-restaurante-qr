@@ -58,7 +58,7 @@ function Sidebar() {
       return;
     }
 
-    authFetch(`/empleados/${usuario.id}/contrasena`, {
+    authFetch(`/api/empleados/${usuario.id}/contrasena`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

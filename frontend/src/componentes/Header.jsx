@@ -24,7 +24,7 @@ function Header() {
 
     const cargarConfig = () => {
         if (!localStorage.getItem("auth")) return;
-        authFetch("/configuracion")
+        authFetch("/api/configuracion")
             .then(res => res?.json?.())
             .then(data => {
                 if (data?.nombreRestaurante) setNombreRestaurante(data.nombreRestaurante);

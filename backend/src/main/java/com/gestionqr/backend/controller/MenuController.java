@@ -23,9 +23,9 @@ import com.gestionqr.backend.service.MenuService;
  * Controlador REST para la gestión de menus.
  * Se encarga de recibir las peticiones HTTP y delegar la lógica al servicio.
  */
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/menus")
+@RequestMapping("/api/menus")
 public class MenuController {
 
     @Autowired

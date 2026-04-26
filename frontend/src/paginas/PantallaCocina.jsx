@@ -14,7 +14,7 @@ function PantallaCocina() {
   }, []);
 
   function cargarPedidos() {
-    authFetch("/pedidos/activos")
+    authFetch("/api/pedidos/activos")
       .then(res => res.json())
       .then(data => {
         setPedidos(data);
@@ -23,7 +23,7 @@ function PantallaCocina() {
   }
 
   function avanzarEstado(id) {
-    authFetch(`/pedidos/${id}/siguiente-estado`, { method: "PUT" })
+    authFetch(`/api/pedidos/${id}/siguiente-estado`, { method: "PUT" })
       .then(res => {
         if (!res.ok) return res.text().then(msg => { throw new Error(msg); });
         return res.json();

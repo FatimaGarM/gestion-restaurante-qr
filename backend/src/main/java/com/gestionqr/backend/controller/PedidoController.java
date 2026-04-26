@@ -13,9 +13,9 @@ import com.gestionqr.backend.service.PedidoService;
 /**
  * Controlador REST para la gestión de pedidos.
  */
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/api/pedidos")
 public class PedidoController {
 
     @Autowired

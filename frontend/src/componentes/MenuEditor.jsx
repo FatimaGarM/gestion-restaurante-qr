@@ -23,7 +23,7 @@ function MenuEditor() {
 
     useEffect(() => {
         cargarMenus();
-        authFetch("/platos").then(r => r.json()).then(setPlatos);
+        authFetch("/api/platos").then(r => r.json()).then(setPlatos);
     }, []);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function MenuEditor() {
     }, [busquedaMenu, menus]);
 
     function cargarMenus() {
-        authFetch("/menus")
+        authFetch("/api/menus")
             .then(r => r.json())
             .then(data => {
                 setMenus(data);
@@ -48,7 +48,7 @@ function MenuEditor() {
     }
 
     function cargarMenu(id) {
-        authFetch(`/menus/${id}`)
+        authFetch(`/api/menus/${id}`)
             .then(r => r.json())
             .then(data => {
                 setMenu(data);
@@ -68,7 +68,7 @@ function MenuEditor() {
     async function crearMenu() {
         if (!precioMenu) { alert("Introduce el precio del menú."); return; }
         if (!diaMenu) { alert("Selecciona el día del menú."); return; }
-        const res = await authFetch("/menus", {
+        const res = await authFetch("/api/menus", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ dia: diaMenu, precio: String(precioMenu)})
@@ -82,7 +82,7 @@ function MenuEditor() {
 
     async function eliminarMenu() {
         if (!menuSeleccionadoId) return;
-        await authFetch(`/menus/${menuSeleccionadoId}`, { method: "DELETE" });
+        await authFetch(`/api/menus/${menuSeleccionadoId}`, { method: "DELETE" });
         setConfirmarEliminarMenu(false);
         setMenu(null);
         cargarMenus();
@@ -90,7 +90,7 @@ function MenuEditor() {
     }
 
     async function añadirPlatoAMenu(platoId) {
-        await authFetch(`/menus/${menuSeleccionadoId}/plato/${platoId}`, {
+        await authFetch(`/api/menus/${menuSeleccionadoId}/plato/${platoId}`, {
             method: "PUT"
         });
         setModalAñadir(null);
@@ -99,12 +99,12 @@ function MenuEditor() {
     }
 
     async function eliminarPlatoMenu(platoId) {
-        await authFetch(`/menus/${menuSeleccionadoId}/plato/${platoId}`, { method: "DELETE" });
+        await authFetch(`/api/menus/${menuSeleccionadoId}/plato/${platoId}`, { method: "DELETE" });
         cargarMenu(menuSeleccionadoId);
     }
 
     async function moverItem(itemId, direccion) {
-        await authFetch(`/menus/${menuSeleccionadoId}/plato/${itemId}/mover`, {
+        await authFetch(`/api/menus/${menuSeleccionadoId}/plato/${itemId}/mover`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ direccion })

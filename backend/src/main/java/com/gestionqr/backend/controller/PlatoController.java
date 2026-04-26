@@ -14,9 +14,9 @@ import java.util.Optional;
  * Controlador REST para la gestión de platos.
  * Solo recibe peticiones y delega en el servicio.
  */
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/platos")
+@RequestMapping("/api/platos")
 public class PlatoController {
 
     @Autowired
