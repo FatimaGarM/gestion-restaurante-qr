@@ -1,1 +1,1 @@
-INSET INTO empleado (nombre, email, contraseña, imagen, tipo_empleado, estado) VALUES('Gerente','gerente@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', 'GERENTE','ACTIVO');
+INSERT INTO empleado (nombre, email, contraseña, imagen, tipo_empleado, estado) VALUES('Gerente','gerente@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '', 'GERENTE','ACTIVO');
