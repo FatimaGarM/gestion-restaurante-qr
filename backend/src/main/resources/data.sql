@@ -1,7 +1,7 @@
 INSERT IGNORE INTO empleado (
     nombre,
     email,
-    password,
+    contraseña,
     imagen,
     tipo_empleado,
     estado
