@@ -8,13 +8,20 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: restaurante_qr
+    ports:
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
   backend:
     build: .
+    volumes:
+      - ./uploads:/app/uploads
     container_name: backend_gestionqr
     depends_on:
       mysql:
@@ -24,6 +31,8 @@ services:
 
   frontend:
     build: ../frontend
+    volumes:
+    - ./uploads:/usr/share/nginx/html/uploads
     container_name: frontend_gestionqr
     depends_on:
       - backend
