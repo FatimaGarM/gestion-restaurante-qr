@@ -1,11 +1,9 @@
-FROM tomcat:10.1-jdk17
+FROM openjdk:17-jdk-slim
 
-# eliminar aplicaciones por defecto
-RUN rm -rf /usr/local/tomcat/webapps/*
+WORKDIR /app
 
-# copiar el war generado por maven
-COPY target/backend-0.0.1-SNAPSHOT.jar /usr/local/tomcat/webapps/ROOT.jar
+COPY target/backend-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
-CMD ["catalina.sh", "run"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
