@@ -1,10 +1,10 @@
 
-INSERT DELAYED INTO `configuracion_restaurante` (`id`, `color_primario`, `color_secundario`, `imagen_fondo`, `logo`, `nombre_restaurante`, `direccion`, `email_contacto`, `idioma_carta`, `telefono`, `url_cliente_publica`) VALUES
+INSERT INTO `configuracion_restaurante` (`id`, `color_primario`, `color_secundario`, `imagen_fondo`, `logo`, `nombre_restaurante`, `direccion`, `email_contacto`, `idioma_carta`, `telefono`, `url_cliente_publica`) VALUES
 (1, '#b45309', '#065f46', '1776960149249_Oasis urbanos secretos_ Guía de las mejores terrazas españolas.png', '1776969974163_descarga (5).png', 'Bar La Alameda ', 'Calle Jazmín 18, Sevilla', 'info@barlaalameda.es', 'es,en', '77 777 777', 'https://v6k73wgh-5173.uks1.devtunnels.ms/');
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `empleado` (`id`, `nombre`, `email`, `contraseña`, `imagen`, `tipo_empleado`, `estado`) VALUES
+INSERT INTO `empleado` (`id`, `nombre`, `email`, `contraseña`, `imagen`, `tipo_empleado`, `estado`) VALUES
 (1, 'Gerente ', 'gerente@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '1777037682860_1777015206662_Surveyor free icons designed by Freepik.png', 'GERENTE', 'ACTIVO'),
 (2, 'Raúl Fernandez', 'camarero1@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '1777040931576_camarero.png', 'CAMARERO', 'ACTIVO'),
 (3, 'Alba Romero', 'camarero2@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '1777037658224_1777014790255_Bouquet de Grenelle restaurant--our cute & enthusiastic waitress_.png', 'CAMARERO', 'ACTIVO'),
@@ -14,7 +14,7 @@ INSERT DELAYED INTO `empleado` (`id`, `nombre`, `email`, `contraseña`, `imagen`
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VALUES
+INSERT INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VALUES
 (1, 1, 1, 1),
 (2, 0, 1, 2),
 (3, 2, 1, 3),
@@ -42,7 +42,7 @@ INSERT DELAYED INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VAL
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `menu` (`id`, `dia`, `precio`) VALUES
+INSERT INTO `menu` (`id`, `dia`, `precio`) VALUES
 (2, 'Martes', 13),
 (3, 'Miercoles', 13.5),
 (4, 'Jueves', 12),
@@ -51,7 +51,7 @@ INSERT DELAYED INTO `menu` (`id`, `dia`, `precio`) VALUES
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `menu_plato` (`id`, `tipo_plato`, `orden`, `menu_id`, `plato_id`) VALUES
+INSERT INTO `menu_plato` (`id`, `tipo_plato`, `orden`, `menu_id`, `plato_id`) VALUES
 (5, 'PRIMERO', 1, 2, 2),
 (6, 'SEGUNDO', 2, 2, 6),
 (7, 'POSTRE', 3, 2, 20),
@@ -74,7 +74,7 @@ INSERT DELAYED INTO `menu_plato` (`id`, `tipo_plato`, `orden`, `menu_id`, `plato
 -- --------------------------------------------------------
 
 
-INSERT DELAYED INTO `pedido` (`id`, `mesa`, `estado`, `fecha_hora`, `plato_id`, `servicio_id`, `persona`) VALUES
+INSERT INTO `pedido` (`id`, `mesa`, `estado`, `fecha_hora`, `plato_id`, `servicio_id`, `persona`) VALUES
 (1, 1, 'Servido', '2026-04-19 13:10:00', 1, 1, NULL),
 (2, 1, 'Servido', '2026-04-19 13:12:00', 3, 1, NULL),
 (3, 2, 'Servido', '2026-04-19 13:25:00', 5, 2, NULL),
@@ -161,7 +161,7 @@ INSERT DELAYED INTO `pedido` (`id`, `mesa`, `estado`, `fecha_hora`, `plato_id`, 
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `plato` (`id`, `nombre`, `nombre_en`, `descripcion`, `descripcion_en`, `precio`, `imagen`, `tipo`, `disponible`, `es_novedad`, `fecha_creacion`) VALUES
+INSERT INTO `plato` (`id`, `nombre`, `nombre_en`, `descripcion`, `descripcion_en`, `precio`, `imagen`, `tipo`, `disponible`, `es_novedad`, `fecha_creacion`) VALUES
 (1, 'Ensaladilla rusa', 'Russian salad', 'Patata, atun, huevo y mahonesa casera', 'Potato, tuna, egg and homemade mayo', 5.5, '1776960428382_7 tips para preparar la ensalada rusa perfecta y deliciosa.png', 'PRIMERO', 0, 0, '2026-03-01'),
 (2, 'Salmorejo cordobes', 'Cordoban salmorejo', 'Crema fria de tomate con jamon y huevo', 'Cold tomato cream with ham and egg', 5.8, '1776960466531_🍅🥖 Salmorejo Cordobés_ Cremoso y Refrescante 🇪🇸.png', 'PRIMERO', 1, 0, '2026-03-01'),
 (3, 'Croquetas de jamon', 'Iberian ham croquettes', 'Croquetas caseras crujientes', 'Homemade crispy croquettes', 7.2, '1776960503574_Croquetas de Jamón CRUJIENTES que te sorprenderán hoy_ - recetasdeluisa.png', 'PRIMERO', 1, 1, '2026-03-05'),
@@ -189,7 +189,7 @@ INSERT DELAYED INTO `plato` (`id`, `nombre`, `nombre_en`, `descripcion`, `descri
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `proveedor_id`) VALUES
+INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `proveedor_id`) VALUES
 (1, 'Jamón ibérico de bellota', 'Pieza entera curada 24 meses', 45, 5, 1),
 (2, 'Lomo ibérico', 'Pieza de lomo ibérico al vacío 500g', 18.5, 20, 1),
 (3, 'Secreto ibérico', 'Bandeja 1kg refrigerada', 12.8, 12, 1),
@@ -205,7 +205,7 @@ INSERT DELAYED INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
+INSERT INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
 (1, 'Ibéricos del Sur', 'pedidos@ibericossur.es', '954 112 233'),
 (2, 'Mariscos y Pescados Huelva', 'info@mariscoushuelva.es', '959 445 667'),
 (3, 'Bebidas La Giralda', 'ventas@bebidasgiralda.es', '955 778 990'),
@@ -214,7 +214,7 @@ INSERT DELAYED INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `seccion_carta` (`id`, `nombre`, `nombre_en`, `orden`, `carta_id`) VALUES
+INSERT INTO `seccion_carta` (`id`, `nombre`, `nombre_en`, `orden`, `carta_id`) VALUES
 (1, 'Entrantes', 'Starters', 0, 1),
 (2, 'Carnes', 'Meats', 1, 1),
 (3, 'Pescados', 'Fish', 2, 1),
@@ -229,7 +229,7 @@ INSERT DELAYED INTO `seccion_carta` (`id`, `nombre`, `nombre_en`, `orden`, `cart
 -- Estructura de tabla para la tabla `servicio`
 --
 
-INSERT DELAYED INTO `servicio` (`id`, `estado`, `mesa`, `estado_cobro`, `fecha_solicitud_cobro`, `metodo_pago_solicitado`, `ultima_actividad`) VALUES
+INSERT INTO `servicio` (`id`, `estado`, `mesa`, `estado_cobro`, `fecha_solicitud_cobro`, `metodo_pago_solicitado`, `ultima_actividad`) VALUES
 (1, 1, 1, NULL, NULL, NULL, NULL),
 (2, 1, 2, NULL, NULL, NULL, NULL),
 (3, 1, 3, NULL, NULL, NULL, NULL),
@@ -266,7 +266,7 @@ INSERT DELAYED INTO `servicio` (`id`, `estado`, `mesa`, `estado_cobro`, `fecha_s
 
 -- --------------------------------------------------------
 
-INSERT DELAYED INTO `sesion_mesa` (`id`, `activa`, `creado_en`, `mesa`, `token`, `codigo_acceso`, `contador_personas`, `modo`, `ultima_actividad`) VALUES
+INSERT INTO `sesion_mesa` (`id`, `activa`, `creado_en`, `mesa`, `token`, `codigo_acceso`, `contador_personas`, `modo`, `ultima_actividad`) VALUES
 (1, b'0', '2026-04-20 18:09:26.000000', 1, '21a4226a-09fa-4d50-b53c-f6d55cbdf2aa', '', 0, '', NULL),
 (2, b'0', '2026-04-20 19:04:35.000000', 1, '7dbe1e42-bd01-43a5-abd4-966848899329', '', 0, '', NULL),
 (3, b'0', '2026-04-20 19:13:48.000000', 1, '03c8b6f5-3c43-4add-8d06-9eaec9245f7a', 'HY3C5L2H', 0, '', NULL),
