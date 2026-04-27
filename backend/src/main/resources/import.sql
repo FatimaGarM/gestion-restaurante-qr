@@ -44,7 +44,7 @@ INSERT INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VALUES
 
 INSERT INTO `menu` (`id`, `dia`, `precio`) VALUES
 (2, 'Martes', 13),
-(3, 'Miercoles', 13.5),
+(3, 'Miércoles', 13.5),
 (4, 'Jueves', 12),
 (5, 'Viernes', 14),
 (6, 'Lunes', 8);
@@ -199,18 +199,14 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `prove
 (7, 'Cerveza Cruzcampo barril 50L', 'Barril 50 litros presurizado', 85, 4, 3),
 (8, 'Vino tinto Ribera barrica', 'Botella 75cl crianza', 8.5, 24, 3),
 (9, 'Agua mineral 24 unidades', 'Pack 24 botellas 50cl', 4.8, 30, 3),
-(10, 'Patatas', 'Saco 25kg', 1.2, 50, 1),
-(11, 'sss', 'ssss', 1, 2, 4),
-(13, 'a', 'a', 1, 0, 5);
+(10, 'Patatas', 'Saco 25kg', 1.2, 50, 1);
 
 -- --------------------------------------------------------
 
 INSERT INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
 (1, 'Ibéricos del Sur', 'pedidos@ibericossur.es', '954 112 233'),
 (2, 'Mariscos y Pescados Huelva', 'info@mariscoushuelva.es', '959 445 667'),
-(3, 'Bebidas La Giralda', 'ventas@bebidasgiralda.es', '955 778 990'),
-(4, 'Pedro', 'prueba@test.es', '77 777 777'),
-(5, 'SS', 'sss@sss', 'ss');
+(3, 'Bebidas La Giralda', 'ventas@bebidasgiralda.es', '955 778 990');
 
 -- --------------------------------------------------------
 
@@ -362,5 +358,3 @@ INSERT INTO `sesion_mesa` (`id`, `activa`, `creado_en`, `mesa`, `token`, `codigo
 (93, b'0', '2026-04-25 17:03:09.000000', 1, '2d9bd35c-255e-4f5c-8adf-8978b4196658', '3B3AL5HN', 1, 'PENDIENTE', '2026-04-25 17:03:09.000000'),
 (94, b'0', '2026-04-25 20:02:35.000000', 1, '2ac5a84b-96a6-425c-a54d-9e9ce82f57a9', 'RVNPN79Y', 1, 'GRUPO', '2026-04-25 20:02:40.000000'),
 (95, b'1', '2026-04-25 22:12:49.000000', 1, '96ff6eb0-5dec-416f-8c4f-e6aa347b5a9c', 'K2GNG8RW', 1, 'PENDIENTE', '2026-04-25 22:12:50.000000');
-
----------------------------------------------------------
