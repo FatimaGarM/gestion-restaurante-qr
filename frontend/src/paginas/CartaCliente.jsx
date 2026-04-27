@@ -136,7 +136,7 @@ export default function CartaCliente() {
 
     async function cargarResumen(tokenSesion, personaActual = personaId) {
         const qsPersona = personaActual ? `&persona=${encodeURIComponent(personaActual)}` : "";
-        const res = await fetch(`/publica/resumen?token=${encodeURIComponent(tokenSesion)}${qsPersona}`);
+        const res = await fetch(`/api/publica/resumen?token=${encodeURIComponent(tokenSesion)}${qsPersona}`);
         if (res.status === 401) {
             throw new Error("TOKEN_INVALIDO");
         }
