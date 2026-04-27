@@ -1,114 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: localhost
--- Tiempo de generación: 27-04-2026 a las 17:36:48
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `restaurante_qr`
---
-CREATE DATABASE IF NOT EXISTS `restaurante_qr` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `restaurante_qr`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `carta`
---
-
-DROP TABLE IF EXISTS `carta`;
-CREATE TABLE `carta` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `imagen_banner` varchar(255) DEFAULT NULL,
-  `activa` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `carta`
---
-
-INSERT DELAYED INTO `carta` (`id`, `nombre`, `imagen_banner`, `activa`) VALUES
-(1, 'Carta Bar La Alameda', '1776960209185_¿Dónde cenar un domingo o un lunes en Sevilla_.png', 1),
-(2, 'Prueba', NULL, 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cobro_persona`
---
-
-DROP TABLE IF EXISTS `cobro_persona`;
-CREATE TABLE `cobro_persona` (
-  `id` bigint(20) NOT NULL,
-  `cobrado` bit(1) NOT NULL,
-  `fecha_cobro` datetime(6) DEFAULT NULL,
-  `importe` double DEFAULT NULL,
-  `persona` int(11) DEFAULT NULL,
-  `servicio_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `configuracion_restaurante`
---
-
-DROP TABLE IF EXISTS `configuracion_restaurante`;
-CREATE TABLE `configuracion_restaurante` (
-  `id` bigint(20) NOT NULL,
-  `color_primario` varchar(255) DEFAULT NULL,
-  `color_secundario` varchar(255) DEFAULT NULL,
-  `imagen_fondo` varchar(255) DEFAULT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `nombre_restaurante` varchar(255) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
-  `email_contacto` varchar(255) DEFAULT NULL,
-  `idioma_carta` varchar(255) DEFAULT NULL,
-  `telefono` varchar(255) DEFAULT NULL,
-  `url_cliente_publica` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `configuracion_restaurante`
---
 
 INSERT DELAYED INTO `configuracion_restaurante` (`id`, `color_primario`, `color_secundario`, `imagen_fondo`, `logo`, `nombre_restaurante`, `direccion`, `email_contacto`, `idioma_carta`, `telefono`, `url_cliente_publica`) VALUES
 (1, '#b45309', '#065f46', '1776960149249_Oasis urbanos secretos_ Guía de las mejores terrazas españolas.png', '1776969974163_descarga (5).png', 'Bar La Alameda ', 'Calle Jazmín 18, Sevilla', 'info@barlaalameda.es', 'es,en', '77 777 777', 'https://v6k73wgh-5173.uks1.devtunnels.ms/');
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empleado`
---
-
-DROP TABLE IF EXISTS `empleado`;
-CREATE TABLE `empleado` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `contraseña` varchar(255) DEFAULT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
-  `tipo_empleado` varchar(50) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `empleado`
---
 
 INSERT DELAYED INTO `empleado` (`id`, `nombre`, `email`, `contraseña`, `imagen`, `tipo_empleado`, `estado`) VALUES
 (1, 'Gerente ', 'gerente@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '1777037682860_1777015206662_Surveyor free icons designed by Freepik.png', 'GERENTE', 'ACTIVO'),
@@ -119,22 +13,6 @@ INSERT DELAYED INTO `empleado` (`id`, `nombre`, `email`, `contraseña`, `imagen`
 (6, 'Admin Pruebas', 'admin@test.es', '$2a$10$E9dK8r3HaEa9X4OtnNL7BOnjIOCkOjfp9BITUcdAM24BaFdudMKv.', '1777037643892_1777014623140_Operator directional icon.png', 'GERENTE', 'ACTIVO');
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `item_seccion`
---
-
-DROP TABLE IF EXISTS `item_seccion`;
-CREATE TABLE `item_seccion` (
-  `id` bigint(20) NOT NULL,
-  `orden` int(11) DEFAULT NULL,
-  `seccion_id` bigint(20) DEFAULT NULL,
-  `plato_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `item_seccion`
---
 
 INSERT DELAYED INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VALUES
 (1, 1, 1, 1),
@@ -164,21 +42,6 @@ INSERT DELAYED INTO `item_seccion` (`id`, `orden`, `seccion_id`, `plato_id`) VAL
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `menu`
---
-
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu` (
-  `id` bigint(20) NOT NULL,
-  `dia` varchar(255) DEFAULT NULL,
-  `precio` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `menu`
---
-
 INSERT DELAYED INTO `menu` (`id`, `dia`, `precio`) VALUES
 (2, 'Martes', 13),
 (3, 'Miercoles', 13.5),
@@ -187,23 +50,6 @@ INSERT DELAYED INTO `menu` (`id`, `dia`, `precio`) VALUES
 (6, 'Lunes', 8);
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `menu_plato`
---
-
-DROP TABLE IF EXISTS `menu_plato`;
-CREATE TABLE `menu_plato` (
-  `id` bigint(20) NOT NULL,
-  `tipo_plato` varchar(255) DEFAULT NULL,
-  `orden` int(11) NOT NULL,
-  `menu_id` bigint(20) DEFAULT NULL,
-  `plato_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `menu_plato`
---
 
 INSERT DELAYED INTO `menu_plato` (`id`, `tipo_plato`, `orden`, `menu_id`, `plato_id`) VALUES
 (5, 'PRIMERO', 1, 2, 2),
@@ -227,24 +73,6 @@ INSERT DELAYED INTO `menu_plato` (`id`, `tipo_plato`, `orden`, `menu_id`, `plato
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `pedido`
---
-
-DROP TABLE IF EXISTS `pedido`;
-CREATE TABLE `pedido` (
-  `id` bigint(20) NOT NULL,
-  `mesa` int(11) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `fecha_hora` datetime DEFAULT current_timestamp(),
-  `plato_id` bigint(20) DEFAULT NULL,
-  `servicio_id` bigint(20) DEFAULT NULL,
-  `persona` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `pedido`
---
 
 INSERT DELAYED INTO `pedido` (`id`, `mesa`, `estado`, `fecha_hora`, `plato_id`, `servicio_id`, `persona`) VALUES
 (1, 1, 'Servido', '2026-04-19 13:10:00', 1, 1, NULL),
@@ -333,29 +161,6 @@ INSERT DELAYED INTO `pedido` (`id`, `mesa`, `estado`, `fecha_hora`, `plato_id`, 
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `plato`
---
-
-DROP TABLE IF EXISTS `plato`;
-CREATE TABLE `plato` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `nombre_en` varchar(255) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `descripcion_en` varchar(255) DEFAULT NULL,
-  `precio` double DEFAULT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
-  `tipo` varchar(50) DEFAULT NULL,
-  `disponible` tinyint(1) DEFAULT NULL,
-  `es_novedad` tinyint(1) DEFAULT 0,
-  `fecha_creacion` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `plato`
---
-
 INSERT DELAYED INTO `plato` (`id`, `nombre`, `nombre_en`, `descripcion`, `descripcion_en`, `precio`, `imagen`, `tipo`, `disponible`, `es_novedad`, `fecha_creacion`) VALUES
 (1, 'Ensaladilla rusa', 'Russian salad', 'Patata, atun, huevo y mahonesa casera', 'Potato, tuna, egg and homemade mayo', 5.5, '1776960428382_7 tips para preparar la ensalada rusa perfecta y deliciosa.png', 'PRIMERO', 0, 0, '2026-03-01'),
 (2, 'Salmorejo cordobes', 'Cordoban salmorejo', 'Crema fria de tomate con jamon y huevo', 'Cold tomato cream with ham and egg', 5.8, '1776960466531_🍅🥖 Salmorejo Cordobés_ Cremoso y Refrescante 🇪🇸.png', 'PRIMERO', 1, 0, '2026-03-01'),
@@ -384,24 +189,6 @@ INSERT DELAYED INTO `plato` (`id`, `nombre`, `nombre_en`, `descripcion`, `descri
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `producto`
---
-
-DROP TABLE IF EXISTS `producto`;
-CREATE TABLE `producto` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `precio` double NOT NULL,
-  `stock` int(11) NOT NULL,
-  `proveedor_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `producto`
---
-
 INSERT DELAYED INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `proveedor_id`) VALUES
 (1, 'Jamón ibérico de bellota', 'Pieza entera curada 24 meses', 45, 5, 1),
 (2, 'Lomo ibérico', 'Pieza de lomo ibérico al vacío 500g', 18.5, 20, 1),
@@ -418,22 +205,6 @@ INSERT DELAYED INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `proveedor`
---
-
-DROP TABLE IF EXISTS `proveedor`;
-CREATE TABLE `proveedor` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `telefono` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `proveedor`
---
-
 INSERT DELAYED INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
 (1, 'Ibéricos del Sur', 'pedidos@ibericossur.es', '954 112 233'),
 (2, 'Mariscos y Pescados Huelva', 'info@mariscoushuelva.es', '959 445 667'),
@@ -442,23 +213,6 @@ INSERT DELAYED INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
 (5, 'SS', 'sss@sss', 'ss');
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `seccion_carta`
---
-
-DROP TABLE IF EXISTS `seccion_carta`;
-CREATE TABLE `seccion_carta` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `nombre_en` varchar(255) DEFAULT NULL,
-  `orden` int(11) DEFAULT NULL,
-  `carta_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `seccion_carta`
---
 
 INSERT DELAYED INTO `seccion_carta` (`id`, `nombre`, `nombre_en`, `orden`, `carta_id`) VALUES
 (1, 'Entrantes', 'Starters', 0, 1),
@@ -473,21 +227,6 @@ INSERT DELAYED INTO `seccion_carta` (`id`, `nombre`, `nombre_en`, `orden`, `cart
 
 --
 -- Estructura de tabla para la tabla `servicio`
---
-
-DROP TABLE IF EXISTS `servicio`;
-CREATE TABLE `servicio` (
-  `id` bigint(20) NOT NULL,
-  `estado` tinyint(4) DEFAULT NULL,
-  `mesa` int(11) DEFAULT NULL,
-  `estado_cobro` enum('COBRADO_PARCIAL','COBRADO_TOTAL','COBRANDO','PENDIENTE_COBRO','SIN_SOLICITUD') DEFAULT NULL,
-  `fecha_solicitud_cobro` datetime(6) DEFAULT NULL,
-  `metodo_pago_solicitado` enum('BIZUM','METALICO','TARJETA') DEFAULT NULL,
-  `ultima_actividad` datetime(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `servicio`
 --
 
 INSERT DELAYED INTO `servicio` (`id`, `estado`, `mesa`, `estado_cobro`, `fecha_solicitud_cobro`, `metodo_pago_solicitado`, `ultima_actividad`) VALUES
@@ -526,27 +265,6 @@ INSERT DELAYED INTO `servicio` (`id`, `estado`, `mesa`, `estado_cobro`, `fecha_s
 (36, 1, 1, 'SIN_SOLICITUD', NULL, NULL, '2026-04-25 14:49:16.000000');
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sesion_mesa`
---
-
-DROP TABLE IF EXISTS `sesion_mesa`;
-CREATE TABLE `sesion_mesa` (
-  `id` bigint(20) NOT NULL,
-  `activa` bit(1) NOT NULL,
-  `creado_en` datetime(6) DEFAULT NULL,
-  `mesa` int(11) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `codigo_acceso` varchar(16) NOT NULL,
-  `contador_personas` int(11) NOT NULL,
-  `modo` varchar(255) NOT NULL,
-  `ultima_actividad` datetime(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `sesion_mesa`
---
 
 INSERT DELAYED INTO `sesion_mesa` (`id`, `activa`, `creado_en`, `mesa`, `token`, `codigo_acceso`, `contador_personas`, `modo`, `ultima_actividad`) VALUES
 (1, b'0', '2026-04-20 18:09:26.000000', 1, '21a4226a-09fa-4d50-b53c-f6d55cbdf2aa', '', 0, '', NULL),
@@ -645,238 +363,4 @@ INSERT DELAYED INTO `sesion_mesa` (`id`, `activa`, `creado_en`, `mesa`, `token`,
 (94, b'0', '2026-04-25 20:02:35.000000', 1, '2ac5a84b-96a6-425c-a54d-9e9ce82f57a9', 'RVNPN79Y', 1, 'GRUPO', '2026-04-25 20:02:40.000000'),
 (95, b'1', '2026-04-25 22:12:49.000000', 1, '96ff6eb0-5dec-416f-8c4f-e6aa347b5a9c', 'K2GNG8RW', 1, 'PENDIENTE', '2026-04-25 22:12:50.000000');
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `carta`
---
-ALTER TABLE `carta`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `cobro_persona`
---
-ALTER TABLE `cobro_persona`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK97xtv7c62x5fcgy2jsijpgtk0` (`servicio_id`);
-
---
--- Indices de la tabla `configuracion_restaurante`
---
-ALTER TABLE `configuracion_restaurante`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `empleado`
---
-ALTER TABLE `empleado`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indices de la tabla `item_seccion`
---
-ALTER TABLE `item_seccion`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_item_seccion` (`seccion_id`),
-  ADD KEY `fk_item_plato` (`plato_id`);
-
---
--- Indices de la tabla `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_dia` (`dia`);
-
---
--- Indices de la tabla `menu_plato`
---
-ALTER TABLE `menu_plato`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_menu_plato_menu` (`menu_id`),
-  ADD KEY `FK_menu_plato_plato` (`plato_id`);
-
---
--- Indices de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_pedido_plato` (`plato_id`),
-  ADD KEY `fk_pedido_servicio` (`servicio_id`);
-
---
--- Indices de la tabla `plato`
---
-ALTER TABLE `plato`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FKid8vjxky5juk3fnuc1sb9qarf` (`proveedor_id`);
-
---
--- Indices de la tabla `proveedor`
---
-ALTER TABLE `proveedor`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `seccion_carta`
---
-ALTER TABLE `seccion_carta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_seccion_carta` (`carta_id`);
-
---
--- Indices de la tabla `servicio`
---
-ALTER TABLE `servicio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `sesion_mesa`
---
-ALTER TABLE `sesion_mesa`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UKltbx0rl0gsuohi4lblfyl597x` (`token`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `carta`
---
-ALTER TABLE `carta`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `cobro_persona`
---
-ALTER TABLE `cobro_persona`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT de la tabla `configuracion_restaurante`
---
-ALTER TABLE `configuracion_restaurante`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `empleado`
---
-ALTER TABLE `empleado`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `item_seccion`
---
-ALTER TABLE `item_seccion`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT de la tabla `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `menu_plato`
---
-ALTER TABLE `menu_plato`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT de la tabla `pedido`
---
-ALTER TABLE `pedido`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
-
---
--- AUTO_INCREMENT de la tabla `plato`
---
-ALTER TABLE `plato`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT de la tabla `producto`
---
-ALTER TABLE `producto`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT de la tabla `proveedor`
---
-ALTER TABLE `proveedor`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `seccion_carta`
---
-ALTER TABLE `seccion_carta`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `servicio`
---
-ALTER TABLE `servicio`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT de la tabla `sesion_mesa`
---
-ALTER TABLE `sesion_mesa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `cobro_persona`
---
-ALTER TABLE `cobro_persona`
-  ADD CONSTRAINT `FK97xtv7c62x5fcgy2jsijpgtk0` FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`);
-
---
--- Filtros para la tabla `item_seccion`
---
-ALTER TABLE `item_seccion`
-  ADD CONSTRAINT `fk_item_plato` FOREIGN KEY (`plato_id`) REFERENCES `plato` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_item_seccion` FOREIGN KEY (`seccion_id`) REFERENCES `seccion_carta` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `menu_plato`
---
-ALTER TABLE `menu_plato`
-  ADD CONSTRAINT `FK_menu_plato_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_menu_plato_plato` FOREIGN KEY (`plato_id`) REFERENCES `plato` (`id`) ON DELETE SET NULL;
-
---
--- Filtros para la tabla `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `fk_pedido_plato` FOREIGN KEY (`plato_id`) REFERENCES `plato` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_pedido_servicio` FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `FKid8vjxky5juk3fnuc1sb9qarf` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`id`);
-
---
--- Filtros para la tabla `seccion_carta`
---
-ALTER TABLE `seccion_carta`
-  ADD CONSTRAINT `fk_seccion_carta` FOREIGN KEY (`carta_id`) REFERENCES `carta` (`id`) ON DELETE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+---------------------------------------------------------
