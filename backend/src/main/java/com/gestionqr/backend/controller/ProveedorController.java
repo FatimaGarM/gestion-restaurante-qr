@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestionqr.backend.model.Proveedor;
 import com.gestionqr.backend.service.ProveedorService;
 
-@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde el frontend en localhost:5173
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/proveedores")
+@RequestMapping("/api/proveedores")
 public class ProveedorController {
 
     @Autowired
