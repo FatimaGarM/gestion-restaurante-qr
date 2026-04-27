@@ -1,4 +1,4 @@
-INSERT IGNORE INTO empleado (
+INSERT INTO empleado (
     nombre,
     email,
     contraseña,
