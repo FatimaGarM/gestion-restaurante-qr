@@ -103,7 +103,7 @@ export default function CartaCliente() {
     async function solicitarSesion(numeroMesa, codigo = "") {
         const qsCodigo = codigo ? `&codigo=${encodeURIComponent(codigo)}` : "";
         try {
-            const r = await fetch(`/publica/sesion?mesa=${numeroMesa}${qsCodigo}`);
+            const r = await fetch(`/api/publica/sesion?mesa=${numeroMesa}${qsCodigo}`);
             if (!r.ok) {
                 const d = await r.json().catch(() => ({}));
                 return { ok: false, error: d.error || "ERROR_SESION" };
@@ -178,7 +178,7 @@ export default function CartaCliente() {
         setDescargandoTicket(true);
         try {
             const qsPersona = personaId ? `&persona=${encodeURIComponent(personaId)}` : "";
-            const res = await fetch(`/publica/ticket?token=${encodeURIComponent(token)}${qsPersona}`);
+            const res = await fetch(`/api/publica/ticket?token=${encodeURIComponent(token)}${qsPersona}`);
             if (!res.ok) {
                 const texto = await res.text();
                 throw new Error(texto || "No se pudo generar el ticket.");
