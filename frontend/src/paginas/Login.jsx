@@ -11,7 +11,7 @@ function Login() {
 
         const auth = "Basic " + btoa(email + ":" + password);
 
-        fetch("/auth/me", {
+        fetch("/api/auth/me", {
             method: "GET",
             headers: {
                 "Authorization": auth
