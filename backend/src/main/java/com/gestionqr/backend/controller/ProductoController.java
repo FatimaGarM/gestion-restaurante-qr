@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestionqr.backend.model.Producto;
 import com.gestionqr.backend.service.ProductoService;
 
-@CrossOrigin(origins = "http://localhost:5173") // Permitir solicitudes desde el frontend en localhost:5173
-@RequestMapping("/productos")
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/productos")
 @RestController
 public class ProductoController {
 
