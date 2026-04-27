@@ -21,7 +21,7 @@ import java.util.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/publica")
+@RequestMapping("/api/publica")
 public class ClienteController {
 
     private final SesionMesaService sesionMesaService;

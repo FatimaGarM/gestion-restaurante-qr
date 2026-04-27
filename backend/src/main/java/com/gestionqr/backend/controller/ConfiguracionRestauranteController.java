@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/configuracion")
+@RequestMapping("/api/configuracion")
 public class ConfiguracionRestauranteController {
 
     @Autowired
