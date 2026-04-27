@@ -253,7 +253,7 @@ export default function CartaCliente() {
             const [cr, cfr, rc] = await Promise.all([
                 fetch("/api/publica/carta"),
                 fetch("/api/publica/configuracion"),
-                fetch(`/publica/codigo?token=${encodeURIComponent(tokenSesion)}`)
+                fetch(`/api/publica/codigo?token=${encodeURIComponent(tokenSesion)}`)
             ]);
 
             if (cr.ok) {
