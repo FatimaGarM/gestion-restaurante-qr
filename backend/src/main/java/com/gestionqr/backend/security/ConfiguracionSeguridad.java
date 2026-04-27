@@ -29,47 +29,47 @@ public class ConfiguracionSeguridad {
             .authorizeHttpRequests(auth -> auth
 
                 // Imágenes y recursos estáticos — públicos (para la carta QR del cliente)
-                .requestMatchers("/uploads/**").permitAll()
+                .requestMatchers("/api/uploads/**").permitAll()
 
                 // Endpoints públicos del cliente (carta QR, sin autenticación)
-                .requestMatchers("/publica/**").permitAll()
+                .requestMatchers("/api/publica/**").permitAll()
 
                 // Endpoint de autenticación — cualquier empleado autenticado puede usarlo
-                .requestMatchers("/auth/me").authenticated()
+                .requestMatchers("/api/auth/me").authenticated()
 
                 // Cualquier usuario autenticado puede cambiar su propia contraseña
-                .requestMatchers(HttpMethod.PUT, "/empleados/*/contrasena").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/empleados/*/contrasena").authenticated()
 
                 // Gestión de empleados — solo GERENTE
-                .requestMatchers("/empleados/**").hasRole("GERENTE")
+                .requestMatchers("/api/empleados/**").hasRole("GERENTE")
 
                 // Carta — GET autenticado, modificaciones solo GERENTE
-                .requestMatchers(HttpMethod.GET, "/platos/**").authenticated()
-                .requestMatchers("/platos/**").hasRole("GERENTE")
+                .requestMatchers(HttpMethod.GET, "/api/platos/**").authenticated()
+                .requestMatchers("/api/platos/**").hasRole("GERENTE")
 
                 // Cartas (menú digital) — GET autenticado, modificaciones solo GERENTE
-                .requestMatchers(HttpMethod.GET, "/cartas/**").authenticated()
-                .requestMatchers("/cartas/**").hasRole("GERENTE")
+                .requestMatchers(HttpMethod.GET, "/api/cartas/**").authenticated()
+                .requestMatchers("/api/cartas/**").hasRole("GERENTE")
 
                 // Configuración del restaurante — GET autenticado, modificaciones solo GERENTE
-                .requestMatchers(HttpMethod.GET, "/configuracion").authenticated()
-                .requestMatchers(HttpMethod.PUT, "/configuracion").hasRole("GERENTE")
-                .requestMatchers("/configuracion/**").hasRole("GERENTE")
+                .requestMatchers(HttpMethod.GET, "/api/configuracion").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/configuracion").hasRole("GERENTE")
+                .requestMatchers("/api/configuracion/**").hasRole("GERENTE")
 
                 // Menús del día — GET autenticado, modificaciones solo GERENTE
-                .requestMatchers(HttpMethod.GET, "/menus/**").authenticated()
-                .requestMatchers("/menus/**").hasRole("GERENTE")
+                .requestMatchers(HttpMethod.GET, "/api/menus/**").authenticated()
+                .requestMatchers("/api/menus/**").hasRole("GERENTE")
 
                 // Productos y proveedores — solo GERENTE
-                .requestMatchers("/productos/**").hasRole("GERENTE")
-                .requestMatchers("/proveedores/**").hasRole("GERENTE")
+                .requestMatchers("/api/productos/**").hasRole("GERENTE")
+                .requestMatchers("/api/proveedores/**").hasRole("GERENTE")
 
                 // Estadísticas — solo GERENTE
                 .requestMatchers("/estadisticas/**").hasRole("GERENTE")
 
                 // Pedidos y servicios — cualquier empleado autenticado
-                .requestMatchers("/pedidos/**").authenticated()
-                .requestMatchers("/servicios/**").authenticated()
+                .requestMatchers("/api/pedidos/**").authenticated()
+                .requestMatchers("/api/servicios/**").authenticated()
 
                 // Cualquier otra ruta — autenticado
                 .anyRequest().authenticated()
