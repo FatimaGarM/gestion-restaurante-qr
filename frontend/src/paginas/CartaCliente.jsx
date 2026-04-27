@@ -124,7 +124,7 @@ export default function CartaCliente() {
     }
 
     async function solicitarNuevaPersona(tokenSesion) {
-        const pr = await fetch("/publica/sesion/nueva-persona", {
+        const pr = await fetch("/api/publica/sesion/nueva-persona", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ token: tokenSesion })
@@ -151,7 +151,7 @@ export default function CartaCliente() {
         if (!token) return;
         setSolicitandoCobro(true);
         try {
-            const res = await fetch("/publica/cobro/solicitar", {
+            const res = await fetch("/api/publica/cobro/solicitar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -251,8 +251,8 @@ export default function CartaCliente() {
     async function iniciar(tokenSesion) {
         try {
             const [cr, cfr, rc] = await Promise.all([
-                fetch("/publica/carta"),
-                fetch("/publica/configuracion"),
+                fetch("/api/publica/carta"),
+                fetch("/api/publica/configuracion"),
                 fetch(`/publica/codigo?token=${encodeURIComponent(tokenSesion)}`)
             ]);
 
@@ -427,7 +427,7 @@ export default function CartaCliente() {
         if (!carrito.length || !token) return;
         setEnviando(true);
         try {
-            const res = await fetch("/publica/pedidos", {
+            const res = await fetch("/api/publica/pedidos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
@@ -545,7 +545,7 @@ export default function CartaCliente() {
     async function establecerModo(modoElegido) {
         setCargando(true);
         try {
-            const res = await fetch("/publica/sesion/modo", {
+            const res = await fetch("/api/publica/sesion/modo", {
                 method: "POST", headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token, modo: modoElegido })
             });
