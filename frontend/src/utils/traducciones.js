@@ -483,7 +483,6 @@ export const traducciones = {
     "proveedores.editarProveedor": "Edit supplier",
     "proveedores.crearProveedor": "Add supplier",
     "proveedores.seleccionarProveedor": "Select supplier",
-    // Products
     "productos.titulo": "Products",
     "productos.anadir": "Add product",
     "productos.añadir": "Add product",
