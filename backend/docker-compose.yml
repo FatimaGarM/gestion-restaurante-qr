@@ -33,11 +33,13 @@ services:
     build: ../frontend
     volumes:
     - ./uploads:/usr/share/nginx/html/uploads
+    - /etc/letsencrypt:/etc/letsencrypt
     container_name: frontend_gestionqr
     depends_on:
       - backend
     ports:
       - "80:80"
+      - "443:443"
 
 volumes:
   mysql_data:
