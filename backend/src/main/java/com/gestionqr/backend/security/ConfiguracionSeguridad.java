@@ -49,7 +49,7 @@ public class ConfiguracionSeguridad {
 
                 // Cartas (menú digital) — GET autenticado, modificaciones solo GERENTE
                 .requestMatchers(HttpMethod.GET, "/api/cartas/**").authenticated()
-                .requestMatchers("/api/cartas/**").hasRole("GERENTE")
+                .requestMatchers("/api/carta/**").hasRole("GERENTE")
 
                 // Configuración del restaurante — GET autenticado, modificaciones solo GERENTE
                 .requestMatchers(HttpMethod.GET, "/api/configuracion").authenticated()
