@@ -509,6 +509,8 @@ function MenuEditor() {
                             autoFocus
                             type="number"
                             range="0.01"
+                            max="999"
+                            step="0.10"
                             onChange={e => setPrecioMenu(e.target.value)}
                             placeholder={t("menu.precioMenu")}
                             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-4 outline-none focus:border-emerald-500"
