@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/carta")
+@RequestMapping("/api/cartas")
 public class CartaController {
 
     @Autowired
