@@ -313,22 +313,24 @@ function GestionProductos() {
                                 ))}
                             </select>
                         </div>
-                        <div className="mt-2 flex-col items-center gap-2">
-                            <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
-                            <select
-                                value={proveedorBorrar}
-                                onChange={(e) => {
-                                    setProveedorBorrar(e.target.value);
-                                }}
-                                className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
-                            >
-                                <option value="">{t("proveedores.eliminarProveedor")}</option>
-                                {proveedores.map(proveedor => (
-                                    <option key={proveedor.id} value={proveedor.id}>
-                                        {proveedor.nombre}
-                                    </option>
-                                ))}
-                            </select>
+                        <div className="mt-2 flex items-center gap-2">
+                            <div className="flex-col items-center gap-2">
+                                <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
+                                <select
+                                    value={proveedorBorrar}
+                                    onChange={(e) => {
+                                        setProveedorBorrar(e.target.value);
+                                    }}
+                                    className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
+                                >
+                                    <option value="">{t("proveedores.eliminarProveedor")}</option>
+                                    {proveedores.map(proveedor => (
+                                        <option key={proveedor.id} value={proveedor.id}>
+                                            {proveedor.nombre}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                             <button
                                 onClick={() => eliminarProveedor(proveedorBorrar)}
                                 className="text-red-500 hover:text-red-600"
@@ -470,7 +472,7 @@ function GestionProductos() {
                 onCancelar={cancelarEliminarProducto}
                 onConfirmar={confirmarEliminarProducto}
             />
-        </div>
+        </div >
     );
 }
 
