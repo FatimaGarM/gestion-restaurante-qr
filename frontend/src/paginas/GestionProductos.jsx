@@ -314,7 +314,7 @@ function GestionProductos() {
                             </select>
                         </div>
                         <div className="flex items-center align-middle gap-2">
-                            <div className="flex-col items-center align-middle gap-2">
+                            <div className="flex items-center gap-2">
                                 <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
                                 <select
                                     value={proveedorBorrar}
