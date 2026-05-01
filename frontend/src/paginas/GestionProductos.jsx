@@ -273,8 +273,8 @@ function GestionProductos() {
 
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
 
-                {/* BUSCADOR más el FILTRO */}
-                <div className="flex gap-3 items-center p-4 border-b">
+                {/* BUSCADOR más el FILTRO  mas panel producto proveedor*/}
+                <div className="flex gap-3  p-4 border-b">
 
                     <input
                         type="text"
@@ -297,8 +297,7 @@ function GestionProductos() {
                     >
                         {t("proveedores.añadirProveedor")}
                     </button>
-                </div>
-                <div className="px-4">
+
                     <div className="mt-2 flex items-center gap-2">
                         <div className="mt-2 flex-col items-center gap-2">
                             <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editar")}</span>
@@ -316,7 +315,7 @@ function GestionProductos() {
                             </select>
                         </div>
                         <div className="mt-2 flex items-center gap-2">
-                            <div className="flex-col items-center align-middle gap-2">
+                            <div className="mt-2 flex-col items-center align-middle gap-2">
                                 <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
                                 <select
                                     value={proveedorBorrar}
