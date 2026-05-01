@@ -273,9 +273,9 @@ function GestionProductos() {
 
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
 
-                {/* BUSCADOR más el FILTRO  mas panel producto proveedor*/}
                 <div className="flex flex-wrap items-end gap-3 p-4 border-b">
 
+                    {/* BUSCADOR */}
                     <input
                         type="text"
                         placeholder={t("productos.buscar")}
@@ -284,29 +284,52 @@ function GestionProductos() {
                         className="bg-gray-100 px-4 py-2 rounded-lg text-sm outline-none"
                     />
 
+                    {/* BOTONES PRINCIPALES */}
                     <button
                         onClick={abrirFormularioCrear}
-                        className="ml-auto bg-emerald-600 text-white px-2 py-2 rounded-lg text-sm hover:bg-emerald-700 transition"
+                        className="ml-auto bg-emerald-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-emerald-700 transition"
                     >
                         {t("productos.añadirProducto")}
                     </button>
 
                     <button
                         onClick={abrirFormularioCrearProveedor}
-                        className="bg-amber-600 text-white px-2 py-2 rounded-lg text-sm hover:bg-amber-700 transition"
+                        className="bg-amber-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-amber-700 transition"
                     >
                         {t("proveedores.añadirProveedor")}
                     </button>
 
-                    <div className="mt-2 flex items-center gap-2">
-                        <div className="mt-2 flex flex-col items-center gap-2">
-                            <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editar")}</span>
+                    {/* EDITAR PROVEEDOR */}
+                    <div className="flex flex-col">
+                        <span className="text-sm font-medium text-gray-700 mb-1">
+                            {t("proveedores.editar")}
+                        </span>
+                        <select
+                            value={proveedorEditar || ""}
+                            onChange={(e) => setProveedorEditar(e.target.value)}
+                            className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm"
+                        >
+                            <option value="">{t("proveedores.editar")}</option>
+                            {proveedores.map(proveedor => (
+                                <option key={proveedor.id} value={proveedor.id}>
+                                    {proveedor.nombre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* ELIMINAR PROVEEDOR */}
+                    <div className="flex items-end gap-2">
+                        <div className="flex flex-col">
+                            <span className="text-sm font-medium text-gray-700 mb-1">
+                                {t("proveedores.eliminar")}
+                            </span>
                             <select
-                                value={proveedorEditar || ""}
-                                onChange={(e) => setProveedorEditar(e.target.value)}
-                                className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
+                                value={proveedorBorrar || ""}
+                                onChange={(e) => setProveedorBorrar(e.target.value)}
+                                className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm"
                             >
-                                <option value="">{t("proveedores.editar")}</option>
+                                <option value="">{t("proveedores.eliminarProveedor")}</option>
                                 {proveedores.map(proveedor => (
                                     <option key={proveedor.id} value={proveedor.id}>
                                         {proveedor.nombre}
@@ -314,33 +337,15 @@ function GestionProductos() {
                                 ))}
                             </select>
                         </div>
-                        <div className="mt-2 flex items-center gap-2">
-                            <div className="mt-2 flex flex-col items-center align-middle gap-2">
-                                <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
-                                <select
-                                    value={proveedorBorrar}
-                                    onChange={(e) => {
-                                        setProveedorBorrar(e.target.value);
-                                    }}
-                                    className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
-                                >
-                                    <option value="">{t("proveedores.eliminarProveedor")}</option>
-                                    {proveedores.map(proveedor => (
-                                        <option key={proveedor.id} value={proveedor.id}>
-                                            {proveedor.nombre}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <button
-                                onClick={() => eliminarProveedor(proveedorBorrar)}
-                                className="text-red-500 hover:text-red-600 shrink-0"
-                            >
-                                <img src={deleteIcon} className="w-5 h-5" />
-                            </button>
-                        </div>
 
+                        <button
+                            onClick={() => eliminarProveedor(proveedorBorrar)}
+                            className="text-red-500 hover:text-red-600 p-2"
+                        >
+                            <img src={deleteIcon} className="w-5 h-5" alt="Eliminar" />
+                        </button>
                     </div>
+
                 </div>
 
                 <table className="w-full text-sm">
