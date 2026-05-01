@@ -274,7 +274,7 @@ function GestionProductos() {
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
 
                 {/* BUSCADOR más el FILTRO  mas panel producto proveedor*/}
-                <div className="flex gap-3  p-4 border-b">
+                <div className="flex flex-wrap items-end gap-3 p-4 border-b">
 
                     <input
                         type="text"
@@ -299,7 +299,7 @@ function GestionProductos() {
                     </button>
 
                     <div className="mt-2 flex items-center gap-2">
-                        <div className="mt-2 flex-col items-center gap-2">
+                        <div className="mt-2 flex flex-col items-center gap-2">
                             <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editar")}</span>
                             <select
                                 value={proveedorEditar || ""}
@@ -315,7 +315,7 @@ function GestionProductos() {
                             </select>
                         </div>
                         <div className="mt-2 flex items-center gap-2">
-                            <div className="mt-2 flex-col items-center align-middle gap-2">
+                            <div className="mt-2 flex flex-col items-center align-middle gap-2">
                                 <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
                                 <select
                                     value={proveedorBorrar}
@@ -334,7 +334,7 @@ function GestionProductos() {
                             </div>
                             <button
                                 onClick={() => eliminarProveedor(proveedorBorrar)}
-                                className="text-red-500 hover:text-red-600"
+                                className="text-red-500 hover:text-red-600 shrink-0"
                             >
                                 <img src={deleteIcon} className="w-5 h-5" />
                             </button>
