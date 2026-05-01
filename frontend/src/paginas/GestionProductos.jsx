@@ -297,6 +297,8 @@ function GestionProductos() {
                     >
                         {t("proveedores.añadirProveedor")}
                     </button>
+                </div>
+                <div className="px-4">
                     <div className="mt-2 flex items-center gap-2">
                         <div className="mt-2 flex-col items-center gap-2">
                             <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editar")}</span>
