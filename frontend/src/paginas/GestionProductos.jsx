@@ -300,7 +300,7 @@ function GestionProductos() {
 
                     <div className="mt-2 flex items-center gap-2">
                         <div className="mt-2 flex flex-col items-center gap-2">
-                            <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editar")}</span>
+                            <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editarProveedor")}</span>
                             <select
                                 value={proveedorEditar || ""}
                                 onChange={(e) => setProveedorEditar(e.target.value)}
@@ -316,7 +316,7 @@ function GestionProductos() {
                         </div>
                         <div className="mt-2 flex items-center gap-2">
                             <div className="mt-2 flex flex-col items-center align-middle gap-2">
-                                <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminar")}</span>
+                                <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminarProveedor")}</span>
                                 <select
                                     value={proveedorBorrar}
                                     onChange={(e) => {
@@ -324,7 +324,7 @@ function GestionProductos() {
                                     }}
                                     className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
                                 >
-                                    <option value="">{t("proveedores.eliminarProveedor")}</option>
+                                    <option value="">{t("proveedores.eliminar")}</option>
                                     {proveedores.map(proveedor => (
                                         <option key={proveedor.id} value={proveedor.id}>
                                             {proveedor.nombre}
