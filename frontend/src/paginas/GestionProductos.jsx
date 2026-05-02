@@ -357,20 +357,20 @@ function GestionProductos() {
                                     <p className="text-sm text-gray-600 mt-1">{t("productos.precio")}: {producto.precio.toFixed(2)} € / kg</p>
                                 </td>
 
-                                <td className="p-3">
+                                <td className="p-3 text-center">
                                     <div className="flex flex-col items-center gap-2">
-                                        <button
-                                            onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
-                                            className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
-                                        >
-                                            -
-                                        </button>
-                                        <span className="px-2">{producto.stock}</span>
                                         <button
                                             onClick={() => { cambiarStock(producto.id, producto.stock + 1) }}
                                             className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs hover:bg-green-200"
                                         >
                                             +
+                                        </button>
+                                        <span className="px-2">{producto.stock}</span>                                        
+                                        <button
+                                            onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
+                                            className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
+                                        >
+                                            -
                                         </button>
                                     </div>
                                 </td>
