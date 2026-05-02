@@ -358,7 +358,7 @@ function GestionProductos() {
                                 </td>
 
                                 <td className="p-3">
-                                    <div className="flex flex-col items-center">
+                                    <div className="flex flex-col items-center gap-2">
                                         <button
                                             onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
                                             className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
