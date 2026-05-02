@@ -312,136 +312,134 @@ function GestionProductos() {
                         ))}
                     </select>
                     <select
-                        value={proveedorBorrar}
-                        onChange={(e) => {
-                            setProveedorBorrar(e.target.value);
-                        }}
-                        className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
-                    >
-                        <option value="">{t("proveedores.eliminar")}</option>
-                        {proveedores.map(proveedor => (
-                            <option key={proveedor.id} value={proveedor.id}>
-                                {proveedor.nombre}
-                            </option>
-                        ))}
-                    </select>
-                    <button
-                        onClick={() => eliminarProveedor(proveedorBorrar)}
-                        className="text-red-500 hover:text-red-600 shrink-0"
-                    >
-                        <img src={deleteIcon} className="w-5 h-5" />
-                    </button>
-
-                </div>
-
-                <table className="w-full text-sm">
-
-                    <thead className="bg-gray-50 text-gray-600">
-                        <tr>
-                            <th className="text-left p-3">{t("productos.nombre")}</th>
-                            <th className="text-left p-3">{t("productos.stock")}</th>
-                            <th className="text-left p-3">{t("productos.proveedor")}</th>
-                            <th className="text-left p-3">{t("productos.acciones")}</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        {productosFiltrados.map(producto => (
-
-                            <tr key={producto.id} className="border-t hover:bg-gray-50">
-
-                                <td className="p-3">
-                                    <p className="font-medium">{producto.nombre}</p>
-                                    <p className="text-sm text-gray-500">{producto.descripcion}</p>
-                                    <p className="text-sm text-gray-600 mt-1">{t("productos.precio")}: {producto.precio.toFixed(2)} € / kg</p>
-                                </td>
-
-                                <td className="p-3 text-center">
-                                    <div className="flex flex-col items-center gap-2">
-                                        <button
-                                            onClick={() => { cambiarStock(producto.id, producto.stock + 1) }}
-                                            className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs hover:bg-green-200"
-                                        >
-                                            +
-                                        </button>
-                                        <span className="px-2">{producto.stock}</span>                                        
-                                        <button
-                                            onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
-                                            className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
-                                        >
-                                            -
-                                        </button>
-                                    </div>
-                                </td>
-
-                                <td className="p-3">
-                                    {proveedores.filter(p => p.productos?.some(prod => prod.id === producto.id)).map(p => (
-                                        <div key={p.id}>
-                                            <span className="text-sm text-gray-600 block">{p.nombre}</span>
-                                            <span className="text-sm text-gray-600 block">{p.email}</span>
-                                            <span className="text-sm text-gray-600 block">{p.telefono}</span>
-                                        </div>
-                                    ))}
-                                </td>
-
-                                <td className="p-3">
-                                    <div className="flex items-center gap-3">
-
-                                        <button
-                                            onClick={() => editarProducto(producto.id)}
-                                            className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-lg text-xs hover:bg-emerald-200"
-                                        >
-                                            {t("editar")}
-                                        </button>
-
-                                        <button
-                                            onClick={() => solicitarEliminarProducto(producto.id)}
-                                            className="text-red-500 hover:text-red-600"
-                                        >
-                                            <img src={deleteIcon} className="w-5 h-5" />
-                                        </button>
-
-                                    </div>
-                                </td>
-
-                            </tr>
-
-                        ))}
-
-                    </tbody>
-
-                </table>
-
-                <div className="p-4 text-xs text-gray-500 border-t">
-                    {t("productos.mostrando")} {productosFiltrados.length} {t("productos.productos")}
-                </div>
+                    value={proveedorBorrar}
+                    onChange={(e) => {
+                        setProveedorBorrar(e.target.value);
+                    }}
+                    className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
+                                >
+                    <option value="">{t("proveedores.eliminar")}</option>
+                    {proveedores.map(proveedor => (
+                        <option key={proveedor.id} value={proveedor.id}>
+                            {proveedor.nombre}
+                        </option>
+                    ))}
+                </select>
+                <button
+                    onClick={() => eliminarProveedor(proveedorBorrar)}
+                    className="text-red-500 hover:text-red-600 shrink-0"
+                >
+                    <img src={deleteIcon} className="w-5 h-5" />
+                </button>
 
             </div>
 
-            {/* MODAL */}
-            <DialogoModal
-                abierto={mostrarFormulario}
-                onCerrar={cerrarFormulario}
-                titulo={productoEditar ? t("productos.editarProducto") : t("productos.crearProducto")}
-            >
-                <FormularioProducto
-                    nombre={nombreProducto}
-                    descripcion={descripcionProducto}
-                    precio={precio}
-                    stock={stock}
-                    proveedor={proveedorId}
-                    onNombreChange={(e) => setNombreProducto(e.target.value)}
-                    onDescripcionChange={(e) => setDescripcionProducto(e.target.value)}
-                    onPrecioChange={(e) => setPrecio(e.target.value)}
-                    onStockChange={(e) => setStock(e.target.value)}
-                    onProveedorChange={(e) => setProveedorId(e.target.value)}
-                    onCancelar={cerrarFormulario}
-                    onSubmit={guardarProducto}
-                />
-            </DialogoModal>
+            <table className="w-full text-sm">
 
-            {/*MODAL PROVEEDORES*/}
+                <thead className="bg-gray-50 text-gray-600">
+                    <tr>
+                        <th className="text-left p-3">{t("productos.nombre")}</th>
+                        <th className="text-left p-3">{t("productos.stock")}</th>
+                        <th className="text-left p-3">{t("productos.proveedor")}</th>
+                        <th className="text-left p-3">{t("productos.acciones")}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {productosFiltrados.map(producto => (
+
+                        <tr key={producto.id} className="border-t hover:bg-gray-50">
+
+                            <td className="p-3">
+                                <p className="font-medium">{producto.nombre}</p>
+                                <p className="text-sm text-gray-500">{producto.descripcion}</p>
+                                <p className="text-sm text-gray-600 mt-1">{t("productos.precio")}: {producto.precio.toFixed(2)} € / kg</p>
+                            </td>
+
+                            <td className="p-3">
+                                <button
+                                    onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
+                                    className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
+                                >
+                                    -
+                                </button>
+                                <span className="px-2">{producto.stock}</span>
+                                <button
+                                    onClick={() => { cambiarStock(producto.id, producto.stock + 1) }}
+                                    className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs hover:bg-green-200"
+                                >
+                                    +
+                                </button>
+                            </td>
+
+                            <td className="p-3">
+                                {proveedores.filter(p => p.productos?.some(prod => prod.id === producto.id)).map(p => (
+                                    <div key={p.id}>
+                                        <span className="text-sm text-gray-600 block">{p.nombre}</span>
+                                        <span className="text-sm text-gray-600 block">{p.email}</span>
+                                        <span className="text-sm text-gray-600 block">{p.telefono}</span>
+                                    </div>
+                                ))}
+                            </td>
+
+                            <td className="p-3">
+                                <div className="flex items-center gap-3">
+
+                                    <button
+                                        onClick={() => editarProducto(producto.id)}
+                                        className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-lg text-xs hover:bg-emerald-200"
+                                    >
+                                        {t("editar")}
+                                    </button>
+
+                                    <button
+                                        onClick={() => solicitarEliminarProducto(producto.id)}
+                                        className="text-red-500 hover:text-red-600"
+                                    >
+                                        <img src={deleteIcon} className="w-5 h-5" />
+                                    </button>
+
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    ))}
+
+                </tbody>
+
+            </table>
+
+            <div className="p-4 text-xs text-gray-500 border-t">
+                {t("productos.mostrando")} {productosFiltrados.length} {t("productos.productos")}
+            </div>
+
+        </div>
+
+            {/* MODAL */ }
+    <DialogoModal
+        abierto={mostrarFormulario}
+        onCerrar={cerrarFormulario}
+        titulo={productoEditar ? t("productos.editarProducto") : t("productos.crearProducto")}
+    >
+        <FormularioProducto
+            nombre={nombreProducto}
+            descripcion={descripcionProducto}
+            precio={precio}
+            stock={stock}
+            proveedor={proveedorId}
+            onNombreChange={(e) => setNombreProducto(e.target.value)}
+            onDescripcionChange={(e) => setDescripcionProducto(e.target.value)}
+            onPrecioChange={(e) => setPrecio(e.target.value)}
+            onStockChange={(e) => setStock(e.target.value)}
+            onProveedorChange={(e) => setProveedorId(e.target.value)}
+            onCancelar={cerrarFormulario}
+            onSubmit={guardarProducto}
+        />
+    </DialogoModal>
+
+    {/*MODAL PROVEEDORES*/ }
             <DialogoModal
                 abierto={mostrarFormularioProveedor}
                 onCerrar={cerrarFormularioProveedor}
