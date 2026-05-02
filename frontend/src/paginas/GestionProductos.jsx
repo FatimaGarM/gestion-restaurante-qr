@@ -286,14 +286,14 @@ function GestionProductos() {
 
                     <button
                         onClick={abrirFormularioCrear}
-                        className="ml-auto bg-emerald-600 text-white px-2 py-2 rounded-lg text-sm hover:bg-emerald-700 transition"
+                        className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-700 transition whitespace-nowrap"
                     >
                         {t("productos.añadirProducto")}
                     </button>
 
                     <button
                         onClick={abrirFormularioCrearProveedor}
-                        className="bg-amber-600 text-white px-2 py-2 rounded-lg text-sm hover:bg-amber-700 transition"
+                        className="bg-amber-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-amber-700 transition whitespace-nowrap"
                     >
                         {t("proveedores.añadirProveedor")}
                     </button>
