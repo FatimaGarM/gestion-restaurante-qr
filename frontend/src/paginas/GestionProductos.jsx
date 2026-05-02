@@ -298,49 +298,40 @@ function GestionProductos() {
                         {t("proveedores.añadirProveedor")}
                     </button>
 
-                    <div className="mt-2 flex items-center gap-2">
-                        <div className="mt-2 flex flex-col items-center gap-2">
-                            <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.editarProveedor")}</span>
-                            <select
-                                value={proveedorEditar || ""}
-                                onChange={(e) => setProveedorEditar(e.target.value)}
-                                className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
-                            >
-                                <option value="">{t("proveedores.editar")}</option>
-                                {proveedores.map(proveedor => (
-                                    <option key={proveedor.id} value={proveedor.id}>
-                                        {proveedor.nombre}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="mt-2 flex items-center gap-2">
-                            <div className="mt-2 flex flex-col items-center align-middle gap-2">
-                                <span className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.eliminarProveedor")}</span>
-                                <select
-                                    value={proveedorBorrar}
-                                    onChange={(e) => {
-                                        setProveedorBorrar(e.target.value);
-                                    }}
-                                    className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
-                                >
-                                    <option value="">{t("proveedores.eliminar")}</option>
-                                    {proveedores.map(proveedor => (
-                                        <option key={proveedor.id} value={proveedor.id}>
-                                            {proveedor.nombre}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <button
-                                onClick={() => eliminarProveedor(proveedorBorrar)}
-                                className="text-red-500 hover:text-red-600 shrink-0"
-                            >
-                                <img src={deleteIcon} className="w-5 h-5" />
-                            </button>
-                        </div>
 
-                    </div>
+                    <select
+                        value={proveedorEditar || ""}
+                        onChange={(e) => setProveedorEditar(e.target.value)}
+                        className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
+                    >
+                        <option value="">{t("proveedores.editar")}</option>
+                        {proveedores.map(proveedor => (
+                            <option key={proveedor.id} value={proveedor.id}>
+                                {proveedor.nombre}
+                            </option>
+                        ))}
+                    </select>
+                    <select
+                        value={proveedorBorrar}
+                        onChange={(e) => {
+                            setProveedorBorrar(e.target.value);
+                        }}
+                        className="border border-gray-300 bg-white px-4 py-2 rounded-lg text-sm pr-8 appearance-none"
+                    >
+                        <option value="">{t("proveedores.eliminar")}</option>
+                        {proveedores.map(proveedor => (
+                            <option key={proveedor.id} value={proveedor.id}>
+                                {proveedor.nombre}
+                            </option>
+                        ))}
+                    </select>
+                    <button
+                        onClick={() => eliminarProveedor(proveedorBorrar)}
+                        className="text-red-500 hover:text-red-600 shrink-0"
+                    >
+                        <img src={deleteIcon} className="w-5 h-5" />
+                    </button>
+
                 </div>
 
                 <table className="w-full text-sm">
@@ -367,19 +358,21 @@ function GestionProductos() {
                                 </td>
 
                                 <td className="p-3">
-                                    <button
-                                        onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
-                                        className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
-                                    >
-                                        -
-                                    </button>
-                                    <span className="px-2">{producto.stock}</span>
-                                    <button
-                                        onClick={() => { cambiarStock(producto.id, producto.stock + 1) }}
-                                        className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs hover:bg-green-200"
-                                    >
-                                        +
-                                    </button>
+                                    <div className="flex flex-col items-center">
+                                        <button
+                                            onClick={() => { cambiarStock(producto.id, producto.stock - 1) }}
+                                            className="px-2 py-1 bg-red-100 text-red-600 rounded-lg text-xs hover:bg-red-200"
+                                        >
+                                            -
+                                        </button>
+                                        <span className="px-2">{producto.stock}</span>
+                                        <button
+                                            onClick={() => { cambiarStock(producto.id, producto.stock + 1) }}
+                                            className="px-2 py-1 bg-green-100 text-green-600 rounded-lg text-xs hover:bg-green-200"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </td>
 
                                 <td className="p-3">

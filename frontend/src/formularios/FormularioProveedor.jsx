@@ -21,7 +21,7 @@ function FormularioProveedor({
 
             {/* NOMBRE */}
             <div>
-                <p className="block text-sm font-medium text-gray-700 mb-2">{t("productos.producto")}</p>
+                <p className="block text-sm font-medium text-gray-700 mb-2">{t("proveedores.nombre")}</p>
                 <input
                     type="text"
                     placeholder={t("proveedores.nombre")}
